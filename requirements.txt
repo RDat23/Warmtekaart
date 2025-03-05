@@ -2,3 +2,4 @@ streamlit
 pydeck
 pandas
 h3
+gdown

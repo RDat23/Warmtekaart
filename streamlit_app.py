@@ -2,12 +2,22 @@ import streamlit as st
 import pydeck as pdk
 import pandas as pd
 import h3
+import gdown
+
+# Download the file (e.g., 'data_KJ.csv') to the current directory
 
 # Data laden met caching
 @st.cache_data
 def load_data():
-    file_path = "data_KJ - kopie.csv"
-    df = pd.read_csv(file_path)
+    # file_path = "data_KJ - kopie.csv"
+    file_id = "163ImTnxHlorRXW3y3VVPkhtbURklgS3j"
+    url = f"https://drive.google.com/uc?export=download&id={file_id}"
+
+    output = "data_KJ.csv"
+    gdown.download(url, output, quiet=False)
+
+    df = pd.read_csv(output)
+    # df = pd.read_csv(file_path)
     return df
 
 df = load_data()
